@@ -45,7 +45,8 @@
     "url": "https://github.com/djforth/morse-utils/issues"
   },
   "homepage": "https://github.com/djforth/morse-utils#readme",
-  "dependencies": {
+  "devDependencies": {
+    "@djforth/cookie_mgmt_fp": "^1.0.2",
     "@djforth/morse-jasmine": "^1.0.8",
     "babel": "^6.5.2",
     "babel-cli": "^6.6.0",
@@ -74,7 +75,8 @@
     "rewireify": "^0.2.5",
     "watchify": "^3.7.0"
   },
-  "devDependencies": {
-    "@djforth/cookie_mgmt_fp": "^1.0.1"
+  "peerDependencies": {
+    "@djforth/cookie_mgmt_fp": "^1.0.2",
+    "lodash": "^4.6.0"
   }
 }
