@@ -5,7 +5,7 @@ module.exports = function(){
   return {
     check: checker({alert: 'Element'})
     , trigger: function(el){
-      remover(el.dataset.alert);
+      remover(document.getElementById(el.dataset.alert));
     }
   };
 };

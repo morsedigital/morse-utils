@@ -4,6 +4,8 @@ var event_listener = require("../src/event_listener");
 
 const checkCalls = require("@djforth/morse-jasmine/check_calls")
   , createEl = require("@djforth/morse-jasmine/create_elements").createHolder
+  , checkMulti = require("@djforth/morse-jasmine/check_multiple_calls")
+  , getMod     = require("@djforth/morse-jasmine/get_module")(event_listener)
   , removeEl = require("@djforth/morse-jasmine/create_elements").removeElement
   , sim_event = require("@djforth/morse-jasmine/simulate_click")
   , spyManager = require("@djforth/morse-jasmine/spy_manager")()
@@ -21,6 +23,42 @@ describe('event_listener', function() {
   afterEach(function () {
     stub_chain.removeAll();
     spyManager.removeAll()
+  });
+
+  describe('manageEvents', function() {
+    let manageEvents;
+    beforeEach(function () {
+      manageEvents = getMod("manageEvents");
+
+      spyManager.addSpy([
+        {title:"mod1", opts:["check", "trigger"]}
+        , {title:"mod2", opts:["check", "trigger"]}
+      ]);
+
+      spyManager.getSpy("mod1").check.and.returnValue(true);
+      spyManager.getSpy("mod2").check.and.returnValue(false);
+
+      let em = manageEvents([spyManager.getSpy("mod1"), spyManager.getSpy("mod2")]);
+      em({target:"elementTarget"})
+    });
+
+    let calls = {
+      "mod1.check":[()=> spyManager.getSpy("mod1").check
+      , ["elementTarget"]
+      ]
+    , "mod2.check":[()=> spyManager.getSpy("mod2").check
+      , ["elementTarget"]
+      ]
+    , "mod1.trigger":[()=> spyManager.getSpy("mod1").trigger
+      , ["elementTarget"]
+      ]
+    };
+
+    checkMulti(calls);
+
+    it('should not call mod2.trigger', function() {
+      expect(spyManager.getSpy("mod2").trigger).not.toHaveBeenCalled()
+    });
   });
 
 

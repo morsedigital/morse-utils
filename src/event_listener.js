@@ -8,7 +8,7 @@ function manageEvents(modules){
     let element = e.target;
     _.forEach(modules, (mod)=>{
       if (mod.check(element)){
-        mod.tigger(element, event);
+        mod.trigger(element);
       }
     });
   };

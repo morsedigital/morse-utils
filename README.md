@@ -1,6 +1,8 @@
 ## morse-utils
 # Morse Utility Functions
 
+[![Build Status](https://semaphoreci.com/api/v1/djforth/morse-utils/branches/master/badge.svg)](https://semaphoreci.com/djforth/morse-utils)
+
 This is a modulised utility functions to use on Morse Sites/App.
 
 It currently sets up 2 modules:

@@ -49,13 +49,13 @@ describe('Module/Alert_close', function() {
     beforeEach(function() {
       stubs.addSpy("remover");
       el = createEl("alert");
-      el.dataset.alert = JSON.stringify("alert-holder");
+      el.dataset.alert = "alert-holder";
     });
 
     it('should call remover', function() {
       closer.trigger(el);
       let spy = stubs.getSpy("remover");
-      expect(spy).toHaveBeenCalledWith(JSON.stringify("alert-holder"));
+      expect(spy).toHaveBeenCalledWith(holder);
 
     });
   });
