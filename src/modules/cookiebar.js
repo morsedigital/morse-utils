@@ -5,11 +5,11 @@ var checker = require('../checker')
 
 module.exports = function(id){
   var permission = CookieMgmt('permission');
-  if (permission.getValue()) remover(id);
+  if (permission.getValue()) remover(document.getElementById(id));
   return {
     check: checker({cookiebar: 'Element'})
     , trigger: function(el){
-      remover(el.dataset.cookiebar);
+      remover(document.getElementById(el.dataset.cookiebar));
       permission.createCookie(true, 365);
     }
   };

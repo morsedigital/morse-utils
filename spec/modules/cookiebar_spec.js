@@ -38,7 +38,7 @@ describe('Module/Cookiebar_close', function() {
   describe('when there is a cookie', function() {
     beforeEach(function() {
       spyManager.getSpy("permission").getValue.and.returnValue(true);
-      cookiebar = Cookiebar("some-id");
+      cookiebar = Cookiebar("cookiebar-holder");
     });
 
     checkCalls(()=>stubs.getSpy("CookieMgmt")
@@ -48,7 +48,7 @@ describe('Module/Cookiebar_close', function() {
       , "permission.getValue")
 
     checkCalls(()=>stubs.getSpy("remover")
-      , "remover", ["some-id"])
+      , "remover", ()=>[holder])
   });
 
   describe('when no cookie', function() {
@@ -81,7 +81,7 @@ describe('Module/Cookiebar_close', function() {
 
 
       checkCalls(()=>stubs.getSpy("remover")
-      , "remover", ["cookiebar-holder"]);
+      , "remover", ()=>[holder]);
 
       checkCalls(()=>spyManager.getSpy("permission").createCookie
       , "permission.createCookie", [true, 365]);
