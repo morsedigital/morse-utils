@@ -73,15 +73,18 @@ describe('Module/Cookiebar_close', function() {
 
     describe('trigger', function() {
       beforeEach(function() {
-
+        spyManager.addSpy({title:'event', opts:["preventDefault"]});
         el = createEl("cookiebar");
         el.dataset.cookiebar = "cookiebar-holder";
-        cookiebar.trigger(el);
+        cookiebar.trigger(el, spyManager.getSpy("event"));
       });
 
 
       checkCalls(()=>stubs.getSpy("remover")
       , "remover", ()=>[holder]);
+
+      checkCalls(()=>spyManager.getSpy("event").preventDefault
+      , "preventDefault");
 
       checkCalls(()=>spyManager.getSpy("permission").createCookie
       , "permission.createCookie", [true, 365]);

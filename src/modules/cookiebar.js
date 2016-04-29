@@ -8,7 +8,8 @@ module.exports = function(id){
   if (permission.getValue()) remover(document.getElementById(id));
   return {
     check: checker({cookiebar: 'Element'})
-    , trigger: function(el){
+    , trigger: function(el, e){
+      e.preventDefault();
       remover(document.getElementById(el.dataset.cookiebar));
       permission.createCookie(true, 365);
     }

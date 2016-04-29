@@ -4,7 +4,8 @@ var checker = require('../checker')
 module.exports = function(){
   return {
     check: checker({alert: 'Element'})
-    , trigger: function(el){
+    , trigger: function(el, e){
+      e.preventDefault();
       remover(document.getElementById(el.dataset.alert));
     }
   };

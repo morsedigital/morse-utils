@@ -47,16 +47,21 @@ describe('Module/Alert_close', function() {
 
   describe('trigger', function() {
     beforeEach(function() {
+      spyManager.addSpy({title:'event', opts:["preventDefault"]});
       stubs.addSpy("remover");
       el = createEl("alert");
       el.dataset.alert = "alert-holder";
+      closer.trigger(el, spyManager.getSpy("event"));
     });
 
     it('should call remover', function() {
-      closer.trigger(el);
       let spy = stubs.getSpy("remover");
       expect(spy).toHaveBeenCalledWith(holder);
+    });
 
+    it('should call preventDefault', function() {
+      let spy = spyManager.getSpy("event").preventDefault;
+      expect(spy).toHaveBeenCalled();
     });
   });
 
