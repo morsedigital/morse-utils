@@ -79,7 +79,6 @@ describe('Module/Cookiebar_close', function() {
         cookiebar.trigger(el, spyManager.getSpy("event"));
       });
 
-
       checkCalls(()=>stubs.getSpy("remover")
       , "remover", ()=>[holder]);
 
