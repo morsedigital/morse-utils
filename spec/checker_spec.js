@@ -2,14 +2,14 @@ const _        = require("lodash");
 
 var checker = require("../src/checker");
 
-const checkCalls = require("@djforth/morse-jasmine/check_calls")
-  , createEl = require("@djforth/morse-jasmine/create_elements").createHolder
-  , getMod   = require("@djforth/morse-jasmine/get_module")(checker)
-  , removeEl = require("@djforth/morse-jasmine/create_elements").removeElement
-  , sim_event = require("@djforth/morse-jasmine/simulate_click")
-  , spyManager = require("@djforth/morse-jasmine/spy_manager")()
-  , stubs      = require("@djforth/morse-jasmine/stub_inner")(checker)
-  , stub_chain = require("@djforth/morse-jasmine/stub_chain_methods");
+const checkCalls = require("@djforth/morse-jasmine-wp/check_calls")
+  , createEl = require("@djforth/morse-jasmine-wp/create_elements").createHolder
+  , getMod   = require("@djforth/morse-jasmine-wp/get_module")(checker)
+  , removeEl = require("@djforth/morse-jasmine-wp/create_elements").removeElement
+  , sim_event = require("@djforth/morse-jasmine-wp/simulate_click")
+  , spyManager = require("@djforth/morse-jasmine-wp/spy_manager")()
+  , stubs      = require("@djforth/morse-jasmine-wp/stub_inner")(checker)
+  , stub_chain = require("@djforth/morse-jasmine-wp/stub_chain_methods");
 
 function setData(el, data){
   _.forIn(data, (v, k)=>{

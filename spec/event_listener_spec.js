@@ -2,15 +2,15 @@ const _        = require("lodash");
 
 var event_listener = require("../src/event_listener");
 
-const checkCalls = require("@djforth/morse-jasmine/check_calls")
-  , createEl = require("@djforth/morse-jasmine/create_elements").createHolder
-  , checkMulti = require("@djforth/morse-jasmine/check_multiple_calls")
-  , getMod     = require("@djforth/morse-jasmine/get_module")(event_listener)
-  , removeEl = require("@djforth/morse-jasmine/create_elements").removeElement
-  , sim_event = require("@djforth/morse-jasmine/simulate_click")
-  , spyManager = require("@djforth/morse-jasmine/spy_manager")()
-  , stubs      = require("@djforth/morse-jasmine/stub_inner")(event_listener)
-  , stub_chain = require("@djforth/morse-jasmine/stub_chain_methods");
+const checkCalls = require("@djforth/morse-jasmine-wp/check_calls")
+  , createEl = require("@djforth/morse-jasmine-wp/create_elements").createHolder
+  , checkMulti = require("@djforth/morse-jasmine-wp/check_multiple_calls")
+  , getMod     = require("@djforth/morse-jasmine-wp/get_module")(event_listener)
+  , removeEl = require("@djforth/morse-jasmine-wp/create_elements").removeElement
+  , sim_event = require("@djforth/morse-jasmine-wp/simulate_click")
+  , spyManager = require("@djforth/morse-jasmine-wp/spy_manager")()
+  , stubs      = require("@djforth/morse-jasmine-wp/stub_inner")(event_listener)
+  , stub_chain = require("@djforth/morse-jasmine-wp/stub_chain_methods");
 
 
 describe('event_listener', function() {

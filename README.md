@@ -40,7 +40,7 @@ HTML set up for Cookiebar
 ```html
 <div id="my-cookiebar">
   Cookiebar info... By closing your accepting that you accept that cookies are in use...
-  <a href="#" data-cookiebar="my-ookiebar">Close</a>
+  <a href="#" data-cookiebar="my-cookiebar">Close</a>
 </div>
 ```
 

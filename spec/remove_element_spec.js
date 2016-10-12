@@ -2,11 +2,11 @@ const _        = require("lodash");
 
 var remove_element = require("../src/remove_element");
 
-const checkCalls = require("@djforth/morse-jasmine/check_calls")
-  , createEl = require("@djforth/morse-jasmine/create_elements").createHolder
-  , removeEl = require("@djforth/morse-jasmine/create_elements").removeElement
-  , sim_event = require("@djforth/morse-jasmine/simulate_click")
-  , spyManager = require("@djforth/morse-jasmine/spy_manager")();
+const checkCalls = require("@djforth/morse-jasmine-wp/check_calls")
+  , createEl = require("@djforth/morse-jasmine-wp/create_elements").createHolder
+  , removeEl = require("@djforth/morse-jasmine-wp/create_elements").removeElement
+  , sim_event = require("@djforth/morse-jasmine-wp/simulate_click")
+  , spyManager = require("@djforth/morse-jasmine-wp/spy_manager")();
 
 describe('click_to_close', function() {
   let el

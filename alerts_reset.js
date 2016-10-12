@@ -1,0 +1,1 @@
+module.exports = require("./lib/modules/alert_reset");
