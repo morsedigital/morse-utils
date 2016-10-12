@@ -57,7 +57,7 @@ describe('Module/Alert_close', function(){
     checkMulti(calls);
   });
 
-  describe('main function', function(){
+  describe('main function if cookie data', function(){
     beforeEach(function(){
       stubs.add(['remover', 'closeAlerts']);
       cookieManager('alertsCookie', JSON.stringify(['alert1']));
@@ -70,8 +70,6 @@ describe('Module/Alert_close', function(){
       let calls = {
         'checker': [()=>stubs.get('checker')
         , ()=>[{alert: 'Element'}]]
-        // , 'check': [()=>spyManager.get('check')
-        // , ()=>['foo']]
         , 'CookieMgmt': [()=>stubs.get('CookieMgmt')
         , ()=>['alerts']]
         , 'alertsCookie.getValue': [()=>spyManager.get('alertsCookie').getValue
@@ -95,6 +93,57 @@ describe('Module/Alert_close', function(){
       });
 
       let cookieData = JSON.stringify(['alert1', 'alert-holder']);
+
+      let calls = {
+        'event.preventDefault': ()=>spyManager.get('event').preventDefault
+        , 'remover': [()=>stubs.get('remover')
+        , ()=>[holder]]
+        , 'alertsCookie.createCookie': [
+          ()=>spyManager.get('alertsCookie').createCookie
+          , ()=>[cookieData, 365]
+        ]
+      };
+      checkMulti(calls);
+    });
+  });
+
+  describe('main function if no cookie data', function(){
+    beforeEach(function(){
+      stubs.add(['remover', 'closeAlerts']);
+      cookieManager('alertsCookie', undefined);
+      closer = Alert();
+    });
+
+    modCheck(()=>closer);
+
+    describe('should check if element has attributes', function(){
+      let calls = {
+        'checker': [()=>stubs.get('checker')
+        , ()=>[{alert: 'Element'}]]
+        , 'CookieMgmt': [()=>stubs.get('CookieMgmt')
+        , ()=>['alerts']]
+        , 'alertsCookie.getValue': ()=>spyManager.get('alertsCookie').getValue
+      };
+      checkMulti(calls);
+
+      it('should not call closeAlerts', function(){
+        expect(stubs.get('closeAlerts')).not.toHaveBeenCalled();
+      });
+    });
+
+    describe('trigger', function(){
+      beforeEach(function(){
+        spyManager.add({title: 'event', opts: ['preventDefault']});
+        el = createEl('alert');
+        el.dataset.alert = 'alert-holder';
+        closer.trigger(el, spyManager.getSpy('event'));
+      });
+
+      afterEach(function(){
+        removeEl(el);
+      });
+
+      let cookieData = JSON.stringify(['alert-holder']);
 
       let calls = {
         'event.preventDefault': ()=>spyManager.get('event').preventDefault

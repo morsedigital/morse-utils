@@ -11,8 +11,12 @@ const closeAlerts = (closed)=>{
 
 module.exports = function(){
   var alertsCookie = CookieMgmt('alerts');
-  var closed = JSON.parse(alertsCookie.getValue());
-  closeAlerts(closed);
+  var value = alertsCookie.getValue();
+  var closed = (value) ? JSON.parse(alertsCookie.getValue()) : [];
+  if(closed.length > 0){
+    closeAlerts(closed);
+  }
+
   return {
     check: checker({alert: 'Element'})
     , trigger: function(el, e){

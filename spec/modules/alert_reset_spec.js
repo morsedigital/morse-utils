@@ -44,9 +44,9 @@ describe('Module/Alert_reset', function(){
 
     describe('should check if element has attributes', function(){
       let calls = {
-        'checker': [()=>stubs.get('checker')
+        checker: [()=>stubs.get('checker')
         , ()=>[{alertsreset: 'Element'}]]
-        , 'CookieMgmt': [()=>stubs.get('CookieMgmt')
+        , CookieMgmt: [()=>stubs.get('CookieMgmt')
         , ()=>['alerts']]
       };
       checkMulti(calls);
