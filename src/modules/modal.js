@@ -31,7 +31,7 @@ const openModal = (modal)=>{
 
 module.exports = ()=>{
   return {
-    check: checker({modal: 'Element', closemodal: 'Element'})
+    check: checker({modal: 'Element', closeModal: 'Element'})
     , trigger: function(el, e){
       e.preventDefault();
       let {
