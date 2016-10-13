@@ -4,7 +4,7 @@ import Alert from '../../src/modules/alert_close';
 
 import {CookieManager, Checker} from '../utils/create_stubs';
 
-import ModuelCheck from '../utils/module_check';
+import ModuleCheck from '../utils/module_check';
 
 /* eslint-disable */
 const checkMulti = require('@djforth/morse-jasmine-wp/check_multiple_calls')
@@ -17,7 +17,7 @@ const checkMulti = require('@djforth/morse-jasmine-wp/check_multiple_calls')
 const cookieManager = CookieManager(stubs, spyManager);
 const checker = Checker(stubs, spyManager);
 
-const modCheck = ModuelCheck(spyManager);
+const modCheck = ModuleCheck(spyManager);
 
 describe('Module/Alert_close', function(){
   let holder, el, closer;
@@ -27,7 +27,7 @@ describe('Module/Alert_close', function(){
     holder = createEl('alert-holder');
   });
 
-  afterEach(function (){
+  afterEach(function(){
     removeEl(holder);
     if (el && el.parentNode) removeEl(el);
     stubs.revertAll();
@@ -38,7 +38,7 @@ describe('Module/Alert_close', function(){
     let closeAlerts, ids, els;
     beforeEach(function(){
       closeAlerts = getMod('closeAlerts');
-      ids = ['alert-1', 'alert-2']
+      ids = ['alert-1', 'alert-2'];
       els = ids.map((id)=>createEl(id));
       closeAlerts(ids);
     });
@@ -48,9 +48,9 @@ describe('Module/Alert_close', function(){
     });
 
     let calls = {
-      'remover0':[()=>stubs.get('remover')
+      remover0:[()=>stubs.get('remover')
       , ()=>[els[0]]]
-      , 'remover1':[()=>stubs.get('remover')
+      , remover1:[()=>stubs.get('remover')
       , ()=>[els[1]], 1]
     };
 
