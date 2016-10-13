@@ -1,1 +1,1 @@
-module.exports = require("./lib/modules/cookiebar");
+module.exports = require('./lib/modules/cookiebar');
