@@ -9,7 +9,6 @@ module.exports = function(id){
   return {
     check: checker({cookiebar: 'Element'})
     , trigger: function(el, e){
-      console.log(el, e)
       e.preventDefault();
       remover(document.getElementById(el.dataset.cookiebar));
       permission.createCookie(true, 365);

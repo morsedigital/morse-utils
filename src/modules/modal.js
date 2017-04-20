@@ -28,8 +28,9 @@ const openModal = (modal)=>{
   modal.setAttribute('tabindex', '0');
   modal.focus();
 };
-
+console.log('Modal >>>>>>>>>>>>>')
 module.exports = ()=>{
+  console.log('Modal >>>>>>>>>>>>>')
   return {
     check: checker({modal: 'Element', closeModal: 'Element'})
     , trigger: function(el, e){
