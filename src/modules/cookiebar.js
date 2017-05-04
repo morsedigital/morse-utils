@@ -1,9 +1,9 @@
-var CookieMgmt = require('@djforth/cookie_mgmt_fp');
+import CookieMgmt from '@djforth/cookie_mgmt_fp';
 
-var checker = require('../checker')
-  , remover = require('../remove_element');
+import checker from '../checker';
+import remover from '../remove_element';
 
-module.exports = function(id){
+export default (id)=>{
   var permission = CookieMgmt('permission');
   if (permission.getValue()) remover(document.getElementById(id));
   return {

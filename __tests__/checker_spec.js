@@ -1,15 +1,18 @@
-const _        = require("lodash");
+import _ from 'lodash';
 
-var checker = require("../src/checker");
+import checker from '../src/checker';
 
-const checkCalls = require("@djforth/morse-jasmine-wp/check_calls")
-  , createEl = require("@djforth/morse-jasmine-wp/create_elements").createHolder
-  , getMod   = require("@djforth/morse-jasmine-wp/get_module")(checker)
-  , removeEl = require("@djforth/morse-jasmine-wp/create_elements").removeElement
-  , sim_event = require("@djforth/morse-jasmine-wp/simulate_click")
-  , spyManager = require("@djforth/morse-jasmine-wp/spy_manager")()
-  , stubs      = require("@djforth/morse-jasmine-wp/stub_inner")(checker)
-  , stub_chain = require("@djforth/morse-jasmine-wp/stub_chain_methods");
+import checkCalls from '@djforth/morse-jasmine-wp/check_calls';
+import {createHolder as createEl} from '@djforth/morse-jasmine-wp/create_elements';
+import GetMod from '@djforth/morse-jasmine-wp/get_module';
+const getMod = GetMod(checker);
+import {removeElement as removeEl} from '@djforth/morse-jasmine-wp/create_elements';
+import sim_event from '@djforth/morse-jasmine-wp/simulate_click';
+import SpyManager from '@djforth/morse-jasmine-wp/spy_manager';
+const spyManager = SpyManager();
+import Stubs from '@djforth/morse-jasmine-wp/stub_inner';
+const stubs = Stubs(checker);
+import stub_chain from '@djforth/morse-jasmine-wp/stub_chain_methods';
 
 function setData(el, data){
   _.forIn(data, (v, k)=>{
@@ -20,18 +23,18 @@ function setData(el, data){
 describe('checker', function() {
   let el, check;
   let mock = {
-    string:"String"
-    , intiger:"String"
+    string:'String'
+    , intiger:'String'
     , boolean:false
-    , element:"some-id"
+    , element:'some-id'
     , array:[]
   };
 
   describe('checker', function() {
     let ch, testEl;
     beforeEach(function() {
-      testEl = createEl("test-element");
-      ch     = getMod("checker");
+      testEl = createEl('test-element');
+      ch     = getMod('checker');
     });
 
     afterEach(function() {
@@ -39,41 +42,41 @@ describe('checker', function() {
     });
 
     it('should return true if array', function() {
-      expect(ch("Array", ["foo"])).toBeTruthy();
-      expect(ch("Array", "foo")).toBeFalsy();
+      expect(ch('Array', ['foo'])).toBeTruthy();
+      expect(ch('Array', 'foo')).toBeFalsy();
     });
 
     it('should return true if boolean', function() {
-      expect(ch("Boolean", false)).toBeTruthy();
-      expect(ch("Boolean", "foo")).toBeFalsy();
+      expect(ch('Boolean', false)).toBeTruthy();
+      expect(ch('Boolean', 'foo')).toBeFalsy();
     });
 
     it('should return true if Element', function() {
-      expect(ch("Element", "test-element")).toBeTruthy();
-      expect(ch("Element", "foo")).toBeFalsy();
+      expect(ch('Element', 'test-element')).toBeTruthy();
+      expect(ch('Element', 'foo')).toBeFalsy();
     });
 
     it('should return true if Number', function() {
-      expect(ch("Number", 2)).toBeTruthy();
-      expect(ch("Number", "foo")).toBeFalsy();
+      expect(ch('Number', 2)).toBeTruthy();
+      expect(ch('Number', 'foo')).toBeFalsy();
     });
 
      it('should return true if String', function() {
-      expect(ch("String", "foo")).toBeTruthy();
-      expect(ch("String", 2)).toBeFalsy();
+      expect(ch('String', 'foo')).toBeTruthy();
+      expect(ch('String', 2)).toBeFalsy();
     });
   });
 
   describe('check', function() {
     beforeEach(function() {
-      el = createEl("holder");
+      el = createEl('holder');
       check = checker(mock);
-      stubs.addSpy("checker");
+      stubs.addSpy('checker');
     });
 
     afterEach(function() {
       removeEl(el);
-      stubs.getSpy("checker").calls.reset()
+      stubs.getSpy('checker').calls.reset()
       stubs.revertAll();
     });
 
@@ -82,13 +85,13 @@ describe('checker', function() {
     });
 
     it('should return false if not the right keys', function() {
-      setData(el, _.omit(mock, ["string", "boolean"]))
+      setData(el, _.omit(mock, ['string', 'boolean']))
       expect(check(el)).toBeFalsy();
     });
 
     it('should return false if not valid key types', function() {
       setData(el, mock);
-      let spy = stubs.getSpy("checker");
+      let spy = stubs.getSpy('checker');
       spy.and.returnValue(false);
       expect(check(el)).toBeFalsy();
       expect(spy).toHaveBeenCalled();
@@ -97,7 +100,7 @@ describe('checker', function() {
 
     it('should return true if checker true', function() {
       setData(el, mock);
-      let spy = stubs.getSpy("checker");
+      let spy = stubs.getSpy('checker');
       spy.and.returnValue(true);
       expect(check(el)).toBeTruthy();
       expect(spy).toHaveBeenCalled();

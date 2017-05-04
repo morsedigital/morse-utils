@@ -1,12 +1,12 @@
-var _ = {
-  isElement: require('lodash/isElement')
-  , isFunction: require('lodash/isFunction')
-};
+import {
+  isElement
+  , isFunction
+} from 'lodash';
 
-module.exports = function(el, cb){
-  if (!_.isElement(el)) return null;
+export default function(el, cb){
+  if (!isElement(el)) return null;
   let parent = el.parentNode || document.body;
   parent.removeChild(el);
-  if (_.isFunction(cb)) cb(el);
+  if (isFunction(cb)) cb(el);
 };
 

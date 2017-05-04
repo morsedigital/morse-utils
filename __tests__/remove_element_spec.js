@@ -1,12 +1,13 @@
-const _        = require("lodash");
+import _ from 'lodash';
 
-var remove_element = require("../src/remove_element");
+import remove_element from '../src/remove_element';
 
-const checkCalls = require("@djforth/morse-jasmine-wp/check_calls")
-  , createEl = require("@djforth/morse-jasmine-wp/create_elements").createHolder
-  , removeEl = require("@djforth/morse-jasmine-wp/create_elements").removeElement
-  , sim_event = require("@djforth/morse-jasmine-wp/simulate_click")
-  , spyManager = require("@djforth/morse-jasmine-wp/spy_manager")();
+import checkCalls from '@djforth/morse-jasmine-wp/check_calls';
+import {createHolder as createEl} from '@djforth/morse-jasmine-wp/create_elements';
+import {removeElement as removeEl} from '@djforth/morse-jasmine-wp/create_elements';
+import sim_event from '@djforth/morse-jasmine-wp/simulate_click';
+import SpyManager from '@djforth/morse-jasmine-wp/spy_manager';
+const spyManager = SpyManager();
 
 describe('click_to_close', function() {
   let el

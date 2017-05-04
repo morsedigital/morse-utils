@@ -1,18 +1,20 @@
 /* eslint-env browser, jasmine */
-var Cookiebar = require('../../src/modules/cookiebar');
+import Cookiebar from '../../src/modules/cookiebar';
 
 import {CookieManager, Checker} from '../utils/create_stubs';
 import ModuelCheck from '../utils/module_check';
 
 /* eslint-disable */
-const checkMulti = require('@djforth/morse-jasmine-wp/check_multiple_calls')
-  , checkCalls = require('@djforth/morse-jasmine-wp/check_calls')
-  , createEl = require('@djforth/morse-jasmine-wp/create_elements').createHolder
-  , removeEl = require('@djforth/morse-jasmine-wp/create_elements').removeElement
-  , sim_event = require('@djforth/morse-jasmine-wp/simulate_click')
-  , spyManager = require('@djforth/morse-jasmine-wp/spy_manager')()
-  , stubs      = require('@djforth/morse-jasmine-wp/stub_inner')(Cookiebar)
-  , stub_chain = require('@djforth/morse-jasmine-wp/stub_chain_methods');
+import checkMulti from '@djforth/morse-jasmine-wp/check_multiple_calls';
+import checkCalls from '@djforth/morse-jasmine-wp/check_calls';
+import {createHolder as createEl} from '@djforth/morse-jasmine-wp/create_elements';
+import {removeElement as removeEl} from '@djforth/morse-jasmine-wp/create_elements';
+import sim_event from '@djforth/morse-jasmine-wp/simulate_click';
+import SpyManager from '@djforth/morse-jasmine-wp/spy_manager';
+const spyManager = SpyManager();
+import Stubs from '@djforth/morse-jasmine-wp/stub_inner';
+const stubs = Stubs(Cookiebar);
+import stub_chain from '@djforth/morse-jasmine-wp/stub_chain_methods';
 /* eslint-enable */
 const cookieManager = CookieManager(stubs, spyManager);
 const checker = Checker(stubs, spyManager);

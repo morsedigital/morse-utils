@@ -1,9 +1,9 @@
-var checker = require('../checker')
-  , remover = require('../remove_element');
+import checker from '../checker';
+import remover from '../remove_element';
 
-var CookieMgmt = require('@djforth/cookie_mgmt_fp');
+import CookieMgmt from '@djforth/cookie_mgmt_fp';
 
-module.exports = function(key = 'alerts'){
+export default (key = 'alerts')=>{
   var alertsCookie = CookieMgmt('alerts');
   return {
     check: checker({alertsreset: 'Element'})
