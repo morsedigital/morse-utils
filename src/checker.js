@@ -22,6 +22,9 @@ function checker(type, data){
     case 'Element':
       valid = _.isElement(document.getElementById(data));
       break;
+    case 'ElementClass':
+      valid = _.isElement(document.querySelector(`.${data}`));
+      break;
     case 'Number':
       valid = _.isNumber(data);
       break;

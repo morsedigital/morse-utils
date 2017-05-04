@@ -33,6 +33,7 @@ module.exports = ()=>{
   return {
     check: checker({modal: 'Element', closeModal: 'Element'})
     , trigger: function(el, e){
+
       e.preventDefault();
       let {
         close
