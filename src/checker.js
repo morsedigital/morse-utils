@@ -5,8 +5,6 @@ import {
   , isElement
 } from 'lodash';
 
-console.log('_', _)
-
 const checker = (type, data)=>{
   let valid = false;
   const checks = {
