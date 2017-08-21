@@ -1,8 +1,6 @@
 {
   "presets": [
-    ["es2015", {"modules": false}],
-    "es2016",
-    "es2017"
+    ["es2015", {"modules": false}]
   ],
   "env": {
     "production": {
@@ -11,9 +9,9 @@
       ]
       , "presets": [
         ["env", {
-          modules: 'umd',
+          modules: "umd",
           "targets": {
-              'node': 4,
+              "node": 4,
               "browsers": [
                 "last 2 versions",
                 "chrome >= 55",
@@ -21,12 +19,26 @@
               ]
             }
         }]
-        , 'babili'
+        , "babili"
       ]
     },
     "test": {
+      "presets": [
+        [
+          "env",
+          {
+            modules: "umd",
+            "targets": {
+              "browsers": [
+                "last 2 versions",
+                "chrome >= 55",
+                "IE >= 11"
+              ]
+            }
+          }
+        ]
+      ],
       "plugins": [
-
         [
           "istanbul",
           {

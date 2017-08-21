@@ -4,7 +4,7 @@ import checker from '../checker';
 import remover from '../remove_element';
 
 export default (id)=>{
-  var permission = CookieMgmt('permission');
+  let permission = CookieMgmt('permission');
   if (permission.getValue()) remover(document.getElementById(id));
   return {
     check: checker({cookiebar: 'Element'})

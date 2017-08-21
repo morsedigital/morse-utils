@@ -1,10 +1,10 @@
-import isArray from 'lodash/isArray'
+import isArray from 'lodash/isArray';
 
 const checkParent = (check, elm)=>{
   if (check(elm.parentNode)) return elm.parentNode;
   if (elm.parentNode === document.body) return null;
-  return checkParent(check, elm.parentNode)
-}
+  return checkParent(check, elm.parentNode);
+};
 
 const manageEvents = (modules)=>{
   return function(e){
@@ -21,12 +21,12 @@ const manageEvents = (modules)=>{
       }
     });
   };
-}
+};
 
 export default function(modules){
   if (!isArray) throw new Error('Must be array');
 
-  var eventHandler = manageEvents(modules);
+  let eventHandler = manageEvents(modules);
   document.body.addEventListener('click', eventHandler, false);
 
   return function(){
