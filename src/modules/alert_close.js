@@ -1,7 +1,7 @@
-var checker = require('../checker')
-  , remover = require('../remove_element');
+import checker from '../checker';
+import remover from '../remove_element';
 
-var CookieMgmt = require('@djforth/cookie_mgmt_fp');
+import CookieMgmt from '@djforth/cookie_mgmt_fp';
 
 const closeAlerts = (closed)=>{
   closed.forEach((id)=>{
@@ -9,7 +9,7 @@ const closeAlerts = (closed)=>{
   });
 };
 
-module.exports = function(){
+export default ()=>{
   var alertsCookie = CookieMgmt('alerts');
   var value = alertsCookie.getValue();
   var closed = (value) ? JSON.parse(alertsCookie.getValue()) : [];

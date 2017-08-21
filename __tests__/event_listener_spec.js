@@ -1,15 +1,18 @@
 /* eslint-env browser, jasmine */
-const _        = require('lodash');
+import _ from 'lodash';
 
-var event_listener = require('../src/event_listener');
+import event_listener from '../src/event_listener';
 
-const checkCalls = require('@djforth/morse-jasmine-wp/check_calls')
-  , checkMulti = require('@djforth/morse-jasmine-wp/check_multiple_calls')
-  , getMod     = require('@djforth/morse-jasmine-wp/get_module')(event_listener)
-  , sim_event = require('@djforth/morse-jasmine-wp/simulate_click')
-  , spyManager = require('@djforth/morse-jasmine-wp/spy_manager')()
-  , stubs      = require('@djforth/morse-jasmine-wp/stub_inner')(event_listener)
-  , stub_chain = require('@djforth/morse-jasmine-wp/stub_chain_methods');
+import checkCalls from '@djforth/morse-jasmine-wp/check_calls';
+import checkMulti from '@djforth/morse-jasmine-wp/check_multiple_calls';
+import GetMod from '@djforth/morse-jasmine-wp/get_module';
+const getMod = GetMod(event_listener);
+import sim_event from '@djforth/morse-jasmine-wp/simulate_click';
+import SpyManager from '@djforth/morse-jasmine-wp/spy_manager';
+const spyManager = SpyManager();
+import Stubs from '@djforth/morse-jasmine-wp/stub_inner';
+const stubs = Stubs(event_listener);
+import stub_chain from '@djforth/morse-jasmine-wp/stub_chain_methods';
 
 describe('event_listener', function() {
   let listener;
@@ -35,6 +38,10 @@ describe('event_listener', function() {
 
       spyManager.getSpy('mod1').check.and.returnValue(true);
       spyManager.getSpy('mod2').check.and.returnValue(false);
+
+      stubs.addSpy('checkParent');
+
+      stubs.getSpy('checkParent').and.returnValue(null);
 
       let em = manageEvents([spyManager.getSpy('mod1'), spyManager.getSpy('mod2')]);
       em({target:'elementTarget'})

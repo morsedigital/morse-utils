@@ -51,7 +51,7 @@ Note: Cookiebar will apply a cookie named permission for 1 year.  On set up it w
 
 If you discover any bugs, feel free to create an issue on GitHub. Please add as much information as possible to help us fixing the possible bug. We also encourage you to help even more by forking and sending us a pull request.
 
-https://github.com/djforth/morse-utils/issues
+https://github.com/morsedigital/morse-utils/issues
 
 ## Contribute
 
@@ -63,7 +63,7 @@ If you need to run the test please use:
 
 ``` bash
 
-npm test
+yarn test
 
 ```
 
@@ -71,7 +71,7 @@ or to rebuild the JS run:
 
 ``` bash
 
-npm run build
+yarn run build
 
 ```
 

@@ -1,21 +1,30 @@
-var _ = {
-  forEach: require('lodash/forEach')
-  , isArray: require('lodash/isArray')
-};
+import isArray from 'lodash/isArray'
 
-function manageEvents(modules){
+const checkParent = (check, elm)=>{
+  if (check(elm.parentNode)) return elm.parentNode;
+  if (elm.parentNode === document.body) return null;
+  return checkParent(check, elm.parentNode)
+}
+
+const manageEvents = (modules)=>{
   return function(e){
     let element = e.target;
-    _.forEach(modules, (mod)=>{
-      if (mod.check(element)){
-        mod.trigger(element, e);
+
+    modules.forEach((mod)=>{
+      let {check, trigger} = mod;
+
+      if (check(element)){
+        trigger(element, e);
+      } else {
+        const elm = checkParent(check, element);
+        if (elm) trigger(elm, e);
       }
     });
   };
 }
 
-module.exports = function(modules){
-  if (!_.isArray) throw new Error('Must be array');
+export default function(modules){
+  if (!isArray) throw new Error('Must be array');
 
   var eventHandler = manageEvents(modules);
   document.body.addEventListener('click', eventHandler, false);

@@ -1,5 +1,5 @@
 
-var checker = require('../checker');
+import checker  from '../checker';
 
 const closeModal = (modal, lastFocus)=>{
   return (e)=>{
@@ -29,7 +29,7 @@ const openModal = (modal)=>{
   modal.focus();
 };
 
-module.exports = ()=>{
+export default ()=>{
   return {
     check: checker({modal: 'Element', closeModal: 'Element'})
     , trigger: function(el, e){

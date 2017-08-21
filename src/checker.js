@@ -1,55 +1,40 @@
-var _ = {
-  forIn: require('lodash/forIn')
-  , keys: require('lodash/keys')
-  , includes: require('lodash/includes')
-  , isArray: require('lodash/isArray')
-  , isBoolean: require('lodash/isBoolean')
-  , isElement: require('lodash/isElement')
-  , isNumber: require('lodash/isNumber')
-  , isString: require('lodash/isString')
-  , reduce: require('lodash/reduce')
-};
+import {
+  forIn
+  , includes
+  , isArray
+  , isElement
+} from 'lodash';
 
-function checker(type, data){
+const checker = (type, data)=>{
   let valid = false;
-  switch (type){
-    case 'Array':
-      valid = _.isArray(data);
-      break;
-    case 'Boolean':
-      valid = _.isBoolean(data);
-      break;
-    case 'Element':
-      valid = _.isElement(document.getElementById(data));
-      break;
-    case 'ElementClass':
-      valid = _.isElement(document.querySelector(`.${data}`));
-      break;
-    case 'Number':
-      valid = _.isNumber(data);
-      break;
-    case 'String':
-      valid = _.isString(data);
-      break;
-    default:
-      valid = false;
+  const checks = {
+    'Array': isArray
+    , 'Boolean': (d)=> typeof d === 'boolean'
+    , 'Element': isElement
+    , 'Number': (d)=> typeof d === 'number'
+    , 'String': (d)=> typeof d === 'string'
   }
 
-  return valid;
+  if (!checks.hasOwnProperty(type)) return false;
+
+  const check = checks[type];
+  data = (type === 'Element') ? document.getElementById(data) : data;
+  return check(data);
 }
 
-module.exports = function(checks){
+export default (checks)=>{
   return function(el){
-    let keys, valid;
+    let keys, valid, chKeys;
     if (!el.dataset) return false;
-    keys = _.keys(el.dataset);
-    valid = _.reduce(_.keys(checks), (test, ch)=>{
+    keys = Object.keys(el.dataset);
+    chKeys = Object.keys(checks);
+    valid = chKeys.reduce((test, ch)=>{
       if (!test) return false;
-      return _.includes(keys, ch);
+      return includes(keys, ch);
     }, true);
     if (!valid) return valid;
 
-    _.forIn(checks, function(v, k){
+    forIn(checks, function(v, k){
       valid = checker(v, el.dataset[k]);
       return valid;
     });

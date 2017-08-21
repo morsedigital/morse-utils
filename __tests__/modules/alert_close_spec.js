@@ -7,12 +7,15 @@ import {CookieManager, Checker} from '../utils/create_stubs';
 import ModuleCheck from '../utils/module_check';
 
 /* eslint-disable */
-const checkMulti = require('@djforth/morse-jasmine-wp/check_multiple_calls')
-  , createEl = require('@djforth/morse-jasmine-wp/create_elements').createHolder
-  , getMod = require('@djforth/morse-jasmine-wp/get_module')(Alert)
-  , removeEl = require('@djforth/morse-jasmine-wp/create_elements').removeElement
-  , spyManager = require('@djforth/morse-jasmine-wp/spy_manager')()
-  , stubs      = require('@djforth/morse-jasmine-wp/stub_inner')(Alert);
+import checkMulti from '@djforth/morse-jasmine-wp/check_multiple_calls';
+import {createHolder as createEl} from '@djforth/morse-jasmine-wp/create_elements';
+import GetMod from '@djforth/morse-jasmine-wp/get_module';
+const getMod = GetMod(Alert);
+import {removeElement as removeEl} from '@djforth/morse-jasmine-wp/create_elements';
+import SpyManager from '@djforth/morse-jasmine-wp/spy_manager';
+const spyManager = SpyManager();
+import Stubs from '@djforth/morse-jasmine-wp/stub_inner';
+const stubs = Stubs(Alert);
 /* eslint-enable */
 const cookieManager = CookieManager(stubs, spyManager);
 const checker = Checker(stubs, spyManager);
