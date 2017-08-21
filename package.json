@@ -31,7 +31,7 @@
   "devDependencies": {
     "@djforth/ap_karma_wp": "^2.0.2",
     "@djforth/ap_utils": "^3.0.4",
-    "@djforth/cookie_mgmt_fp": "^1.0.3",
+    "@djforth/cookie_mgmt_fp": "1.1.0",
     "@djforth/morse-jasmine-wp": "^2.4.2",
     "babel-cli": "^6.24.1",
     "babel-core": "^6.24.1",

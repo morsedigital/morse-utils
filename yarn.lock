@@ -39,9 +39,9 @@
     mkdirp "^0.5.1"
     readdirp "^2.0.0"
 
-"@djforth/cookie_mgmt_fp@^1.0.3":
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/@djforth/cookie_mgmt_fp/-/cookie_mgmt_fp-1.0.4.tgz#ba48154df4ce9bf05a8457cd14bd7c1c9011da49"
+"@djforth/cookie_mgmt_fp@1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@djforth/cookie_mgmt_fp/-/cookie_mgmt_fp-1.1.0.tgz#54b02eba7ebb10e838550a65b27b6cee9caa6119"
 
 "@djforth/morse-jasmine-wp@^2.4.2":
   version "2.4.2"
