@@ -25,7 +25,8 @@ const checker = (type, data)=>{
 export default (checks)=>{
   return function(el){
     let keys, valid, chKeys;
-    if (!el.dataset) return false;
+    if (!isElement(el)) return false;
+    if (Object.keys(el.dataset).length < 1) return false;
     keys = Object.keys(el.dataset);
     chKeys = Object.keys(checks);
     valid = chKeys.reduce((test, ch)=>{

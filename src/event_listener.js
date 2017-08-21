@@ -1,6 +1,10 @@
-import isArray from 'lodash/isArray'
+import {
+  isArray
+  , isElement
+} from 'lodash';
 
 const checkParent = (check, elm)=>{
+  if (!isElement(elm.parentNode)) return null;
   if (check(elm.parentNode)) return elm.parentNode;
   if (elm.parentNode === document.body) return null;
   return checkParent(check, elm.parentNode)

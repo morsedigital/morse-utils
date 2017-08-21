@@ -1,5 +1,4 @@
 import CookieMgmt from '@djforth/cookie_mgmt_fp';
-
 import checker from '../checker';
 import remover from '../remove_element';
 
