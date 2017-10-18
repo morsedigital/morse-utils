@@ -1,6 +1,6 @@
 {
   "name": "@morsedigital/morse-utils",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Utility Functions for Morse Site/App",
   "main": "index.js",
   "scripts": {
@@ -39,7 +39,6 @@
     "babel-plugin-add-module-exports": "^0.2.1",
     "babel-plugin-lodash": "^3.2.11",
     "babel-polyfill": "^6.26.0",
-    "babel-preset-minify": "^0.2.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-minify": "^0.2.0",
     "browserslist": "^2.5.1",
