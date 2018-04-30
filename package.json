@@ -33,23 +33,23 @@
     "@djforth/ap_utils": "^3.1.2",
     "@djforth/morse-jasmine-wp": "^2.5.0",
     "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.0",
-    "babel-eslint": "^8.0.1",
-    "babel-loader": "^7.1.2",
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^8.2.3",
+    "babel-loader": "^7.1.4",
     "babel-plugin-add-module-exports": "^0.2.1",
-    "babel-plugin-lodash": "^3.2.11",
+    "babel-plugin-lodash": "^3.3.2",
     "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.6.1",
-    "babel-preset-minify": "^0.2.0",
-    "browserslist": "^2.5.1",
-    "eslint": "^4.9.0",
+    "babel-preset-minify": "^0.4.0",
+    "browserslist": "^3.2.6",
+    "eslint": "^4.19.1",
     "eslint-config-morsedigital": "^2.1.1",
-    "lodash-webpack-plugin": "^0.11.4",
-    "webpack": "^3.8.1",
-    "webpack-dev-server": "^2.9.2"
+    "lodash-webpack-plugin": "^0.11.5",
+    "webpack": "^4.0.1",
+    "webpack-dev-server": "^3.1.0"
   },
   "dependencies": {
-    "@djforth/cookie_mgmt_fp": ">=1.1.0",
-    "lodash": ">=4.17.4"
+    "@djforth/cookie_mgmt_fp": "^1.2.1",
+    "lodash": "^4.17.10"
   }
 }
