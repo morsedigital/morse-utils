@@ -1,20 +1,19 @@
-import { isArray, isElement } from "lodash";
+import isArray from 'lodash/isArray';
 
-const checkParent = (check, elm) => {
-  if (!isElement(elm.parentNode)) return null;
+const checkParent = (check, elm)=>{
   if (check(elm.parentNode)) return elm.parentNode;
   if (elm.parentNode === document.body) return null;
   return checkParent(check, elm.parentNode);
 };
 
-const manageEvents = modules => {
-  return function(e) {
+const manageEvents = (modules)=>{
+  return function(e){
     let element = e.target;
 
-    modules.forEach(mod => {
-      let { check, trigger } = mod;
-      console.log(check(element), element);
-      if (check(element)) {
+    modules.forEach((mod)=>{
+      let {check, trigger} = mod;
+
+      if (check(element)){
         trigger(element, e);
       } else {
         const elm = checkParent(check, element);
@@ -24,13 +23,13 @@ const manageEvents = modules => {
   };
 };
 
-export default function(modules) {
-  if (!isArray) throw new Error("Must be array");
+export default function(modules){
+  if (!isArray) throw new Error('Must be array');
 
-  var eventHandler = manageEvents(modules);
-  document.body.addEventListener("click", eventHandler, false);
+  let eventHandler = manageEvents(modules);
+  document.body.addEventListener('click', eventHandler, false);
 
-  return function() {
-    document.body.removeEventListener("click", eventHandler, false);
+  return function(){
+    document.body.removeEventListener('click', eventHandler, false);
   };
-}
+};

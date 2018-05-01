@@ -1,16 +1,17 @@
 {
-  "presets": [],
+  "presets": [
+    ["es2015", {"modules": false}]
+  ],
   "env": {
     "production": {
       "plugins": [
         "lodash"
-        , "add-module-exports"
       ]
       , "presets": [
         ["env", {
-          modules: 'umd',
+          modules: "umd",
           "targets": {
-              'node': 4,
+              "node": 4,
               "browsers": [
                 "last 2 versions",
                 "chrome >= 55",
@@ -18,12 +19,26 @@
               ]
             }
         }]
-        , 'minify'
+        , "babili"
       ]
     },
     "test": {
+      "presets": [
+        [
+          "env",
+          {
+            modules: "umd",
+            "targets": {
+              "browsers": [
+                "last 2 versions",
+                "chrome >= 55",
+                "IE >= 11"
+              ]
+            }
+          }
+        ]
+      ],
       "plugins": [
-
         [
           "istanbul",
           {
