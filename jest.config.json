@@ -1,12 +1,18 @@
 {
   "browser": true,
-  "collectCoverageFrom": ["<rootDir>/src/**/*.{js,jsx}"],
+  "collectCoverageFrom": [
+    "<rootDir>/src/**/*.js"
+  ],
+  "coverageReporters": [
+    "text-summary"
+  ],
   "coveragePathIgnorePatterns": ["<rootDir>/node_modules/", "<rootDir>/__tests__", "<rootDir>/__tests__/__helpers__"],
   "roots": [
     "<rootDir>/__tests__/",
     "<rootDir>/src/"
   ],
   "moduleNameMapper": {
+    "@djforth/cookie_mgmt_fp": "<rootDir>/__mocks__/cookie_mgmt_fp"
   },
   "modulePaths": [
     "<rootDir>/src/"
