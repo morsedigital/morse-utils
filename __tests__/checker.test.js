@@ -2,8 +2,7 @@ import _ from 'lodash';
 import { readFileSync } from 'fs';
 import { join } from 'path';
 
-import checker from '../src/checker';
-import SpyManager from '@djforth/stubs-spy-manager-jest';
+import checker, { checker as ch } from '../src/checker';
 
 const htmlPath = join(__dirname, '/../__markup__/checker.html');
 const markup = readFileSync(htmlPath);
@@ -16,9 +15,8 @@ function setData(el, data) {
 }
 
 describe('checker', () => {
-  const spies_stubs = SpyManager(checker);
   let check;
-  let mock = {
+  const mock = {
     String: 'String',
     Number: 10,
     Boolean: false,
@@ -26,15 +24,13 @@ describe('checker', () => {
     Array: ['some-data'],
   };
 
-  afterEach(() => {
-    spies_stubs.reset();
-  });
+  // afterEach(() => {
+  //   spies_stubs.reset();
+  // });
 
   describe('checker', () => {
-    let ch;
     beforeEach(() => {
       document.body.innerHTML = markup.toString();
-      ch = spies_stubs.getFn('checker');
     });
 
     test('should return true if array', () => {

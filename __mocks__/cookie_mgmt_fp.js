@@ -1,11 +1,12 @@
 let name = '';
 let values = '';
 
-export const getNameData = () => name;
-export const setValueData = v => {
+export const getNameData = jest.fn(() => name);
+export const setValueData = jest.fn(v => {
+  console.log(v);
   values = v;
-};
-export const getValueData = () => values;
+});
+export const getValueData = jest.fn(() => values);
 export const getValue = jest.fn(() => {
   if (typeof values === 'string') return values;
   return JSON.stringify(values);
@@ -15,11 +16,12 @@ export const deleteCookie = jest.fn(() => {
   values = '';
 });
 
-export default n => {
+export default jest.fn(n => {
   name = n;
+  console.log('Ehhh', getValue);
   return {
     createCookie,
     deleteCookie,
     getValue,
   };
-};
+});

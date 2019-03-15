@@ -15,7 +15,7 @@ const setData = (type, data) => {
   }
 };
 
-const checker = (type, dataAttr) => {
+export const checker = (type, dataAttr) => {
   const checks = {
     Array: isArray,
     Boolean: d => typeof d === 'boolean',

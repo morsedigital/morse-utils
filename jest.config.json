@@ -1,27 +1,19 @@
 {
   "browser": true,
-  "collectCoverageFrom": [
-    "<rootDir>/src/**/*.js"
+  "collectCoverageFrom": ["<rootDir>/src/**/*.js"],
+  "coverageReporters": ["text-summary"],
+  "coveragePathIgnorePatterns": [
+    "<rootDir>/node_modules/",
+    "<rootDir>/__tests__",
+    "<rootDir>/__tests__/__helpers__"
   ],
-  "coverageReporters": [
-    "text-summary"
-  ],
-  "coveragePathIgnorePatterns": ["<rootDir>/node_modules/", "<rootDir>/__tests__", "<rootDir>/__tests__/__helpers__"],
-  "roots": [
-    "<rootDir>/__tests__/",
-    "<rootDir>/src/"
-  ],
+  "roots": ["<rootDir>/__tests__/", "<rootDir>/src/"],
   "moduleNameMapper": {
     "@djforth/cookie_mgmt_fp": "<rootDir>/__mocks__/cookie_mgmt_fp"
   },
-  "modulePaths": [
-    "<rootDir>/src/"
-  ],
-  "modulePathIgnorePatterns": [
-    "<rootDir>/lib/",
-    "<rootDir>/node_modules/"
-  ],
-  "setupTestFrameworkScriptFile": "@djforth/jest-matchers",
+  "modulePaths": ["<rootDir>/src/"],
+  "modulePathIgnorePatterns": ["<rootDir>/lib/", "<rootDir>/node_modules/"],
+  "setupFilesAfterEnv": ["@djforth/jest-matchers"],
   "testPathIgnorePatterns": [
     "<rootDir>/__tests__/__helpers__",
     "<rootDir>/__tests__/__dummy__",

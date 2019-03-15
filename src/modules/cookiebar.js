@@ -10,6 +10,7 @@ export default id => {
     trigger: (el, e) => {
       e.preventDefault();
       remover(document.getElementById(el.dataset.cookiebar));
+      console.log('create');
       permission.createCookie(true, 365);
     },
   };
