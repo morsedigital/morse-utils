@@ -1,29 +1,40 @@
 ## morse-utils
+
 # Morse Utility Functions
 
 [![Build Status](https://semaphoreci.com/api/v1/djforth/morse-utils/branches/master/badge.svg)](https://semaphoreci.com/djforth/morse-utils)
 
 This is a modulised utility functions to use on Morse Sites/App.
 
-It currently sets up 2 modules:
+It currently sets up 4 modules:
 
-* Alerts (Close button)
-* Cookiebar (Close and set permission cookie)
+- Alerts (Close button)
+- Alerts resets (Resets the alerts)
+- Cookiebar (Close and set permission cookie)
+- ImageViewer (Opens modal for viewing an image)
+- Modal (Close and set permission cookie)
 
 Set up is like so:
 
-```javascrtipt
-var utilies   = require("@djforth/morse-utils")
-  , alerts    = require(@djforth/morse-utils/alerts)
-  , cookiebar = require(@djforth/morse-utils/cookiebar)
+```javascript
+import {
+  EventListener,
+  AlertClose,
+  AlertReset,
+  Modal,
+  Cookiebar,
+  ImageViewer
+} from "@morsedigital/morse-utils";
 
 var modules = [
-    alerts()
-  , cookiebar("cookiebar-id") //Should be id of Cookiebar DOM Node
-]
+  AlertClose(),
+  AlertReset(),
+  cookiebar("cookiebar-id") //Should be id of Cookiebar DOM Node
+  Modal(),
+  ImageViewer(),
+];
 
-utilies(modules);
-
+EventListener(modules);
 ```
 
 HTML Set up for Alert
@@ -39,13 +50,43 @@ HTML set up for Cookiebar
 
 ```html
 <div id="my-cookiebar">
-  Cookiebar info... By closing your accepting that you accept that cookies are in use...
+  Cookiebar info... By closing your accepting that you accept that cookies are
+  in use...
   <a href="#" data-cookiebar="my-cookiebar">Close</a>
 </div>
 ```
 
-Note: Cookiebar will apply a cookie named permission for 1 year.  On set up it will remove the cookiebar if this cookie is present.
+HTML for modal
 
+```html
+<button data-modal="modal" data-close-modal="modal-close">open</button>
+<section
+  class="modal-overlay"
+  id="modal"
+  aria-hidden="true"
+  role="dialog"
+  aria-labelledby="modal-title"
+>
+  <div class="modal-content">
+    <button id="modal-close" class="close-btn">x</button>
+    <h1 id="modal-title">Candidate 1</h1>
+  </div>
+</section>
+```
+
+HTML for image viewer
+
+```html
+<img
+  src="my-img"
+  data-image-viewer="true"
+  data-image-large="/path/to/large/image.jpg"
+  data-modal-class="class-to-add-to-modal"
+  alt="alt text"
+/>
+```
+
+Note: Cookiebar will apply a cookie named permission for 1 year. On set up it will remove the cookiebar if this cookie is present.
 
 # Bug reports
 
@@ -61,7 +102,7 @@ Please make sure any additional code should be covered in tests (Jasmine using k
 
 If you need to run the test please use:
 
-``` bash
+```bash
 
 yarn test
 
@@ -69,7 +110,7 @@ yarn test
 
 or to rebuild the JS run:
 
-``` bash
+```bash
 
 yarn run build
 
@@ -82,4 +123,3 @@ Adrian Stainforth (https://github.com/djforth)
 # License
 
 morse-utils is an open source project falling under the MIT License. By using, distributing, or contributing to this project, you accept and agree that all code within the morse-utils project are licensed under MIT license.
-

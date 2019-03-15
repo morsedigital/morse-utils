@@ -10,9 +10,9 @@ const closeAlerts = closed => {
 };
 
 export default () => {
-  let alertsCookie = CookieMgmt('alerts');
-  let value = alertsCookie.getValue();
-  let closed = value ? JSON.parse(alertsCookie.getValue()) : [];
+  const alertsCookie = CookieMgmt('alerts');
+  const value = alertsCookie.getValue();
+  const closed = value ? JSON.parse(alertsCookie.getValue()) : [];
   if (closed.length > 0) {
     closeAlerts(closed);
   }

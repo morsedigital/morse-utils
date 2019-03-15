@@ -1,47 +1,62 @@
 {
+  "plugins": [
+    "@babel/plugin-transform-destructuring",
+    "@babel/plugin-syntax-dynamic-import",
+    [
+      "@babel/plugin-proposal-object-rest-spread",
+      {
+        "useBuiltIns": true
+      }
+    ],
+    [
+      "@babel/plugin-transform-runtime",
+      {
+        "helpers": false,
+        "regenerator": true
+      }
+    ],
+    [
+      "@babel/plugin-transform-regenerator",
+      {
+        "async": false
+      }
+    ],
+    [
+      "@babel/plugin-proposal-class-properties",
+      {
+        "loose": true
+      }
+    ]
+  ],
   "presets": [],
   "env": {
     "production": {
-      "plugins": [
-        "lodash",
-        "add-module-exports"
-      ],
+      "plugins": ["lodash"],
       "presets": [
         [
-          "env",
+          "@babel/env",
           {
             "modules": false,
             "targets": {
               "node": 4,
-              "browsers": [
-                ">0.25%",
-                "IE >= 11",
-                "not op_mini all"
-              ],
-              "uglify": true
+              "browsers": [">0.25%", "IE >= 11", "not op_mini all"]
             },
-            "useBuiltIns": true
+            "forceAllTransforms": true,
+            "useBuiltIns": "entry"
           }
-        ],
-        "minify"
+        ]
       ]
     },
     "test": {
-      "plugins": [
-        "rewire"
-      ],
+      "plugins": [],
       "presets": [
         [
-          "env",
+          "@babel/env",
           {
             "targets": {
-              "browsers": [
-                ">0.25%",
-                "IE >= 11",
-                "not op_mini all"
-              ]
+              "browsers": [">0.25%", "IE >= 11", "not op_mini all"]
             },
-            "useBuiltIns": true
+            "useBuiltIns": "entry"
           }
         ]
       ]

@@ -16,8 +16,6 @@ const setData = (type, data) => {
 };
 
 const checker = (type, dataAttr) => {
-  let valid = false;
-
   const checks = {
     Array: isArray,
     Boolean: d => typeof d === 'boolean',
@@ -42,7 +40,7 @@ const checkAttributes = attrs =>
 export default checks => el => {
   let keys, valid, chKeys;
   if (!el.attributes) return false;
-  let attrs = Array.prototype.slice.call(el.attributes);
+  const attrs = Array.prototype.slice.call(el.attributes);
   if (!checkAttributes(attrs)) return false;
   keys = Object.keys(el.dataset);
   chKeys = Object.keys(checks);

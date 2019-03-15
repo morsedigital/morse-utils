@@ -1,11 +1,9 @@
-import alertClose from './modules/alert_close';
-import alertReset from './modules/alert_reset';
-import cookiebar from './modules/cookiebar';
-import modal from './modules/modal';
-import eventListener from './event_listener';
-
-export const AlertClose = alertClose;
-export const AlertReset = alertReset;
-export const Cookiebar = cookiebar;
-export const Modal = modal;
-export const EventListener = eventListener;
+import AlertClose from './modules/alert_close';
+import AlertReset from './modules/alert_reset';
+import Cookiebar from './modules/cookiebar';
+import ImageViewer from './modules/image_viewer';
+import Modal from './modules/modal';
+import EventListener from './event_listener';
+import RemoveElement from './remove_element';
+import Checker from './checker';
+export { AlertClose, AlertReset, Checker, Cookiebar, ImageViewer, Modal, EventListener, RemoveElement };

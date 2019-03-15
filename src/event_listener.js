@@ -9,7 +9,7 @@ const checkParent = (check, elm) => {
 
 const manageEvents = modules =>
   function(e) {
-    let element = e.target;
+    const element = e.target;
 
     modules.forEach(({ check, trigger }) => {
       if (check(element)) {
@@ -24,7 +24,7 @@ const manageEvents = modules =>
 export default function(modules) {
   if (!isArray) throw new Error('Must be array');
 
-  let eventHandler = manageEvents(modules);
+  const eventHandler = manageEvents(modules);
   document.body.addEventListener('click', eventHandler, false);
 
   return function() {
