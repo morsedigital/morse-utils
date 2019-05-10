@@ -1,10 +1,10 @@
-import { includes, isArray, isElement } from 'lodash';
+import { includes, isArray, isElement } from "lodash";
 
 const setData = (type, data) => {
   switch (type) {
-    case 'Element':
+    case "Element":
       return document.getElementById(data); //document.getElementById(data);
-    case 'String':
+    case "String":
       return data;
     default:
       try {
@@ -18,10 +18,10 @@ const setData = (type, data) => {
 export const checker = (type, dataAttr) => {
   const checks = {
     Array: isArray,
-    Boolean: d => typeof d === 'boolean',
+    Boolean: d => typeof d === "boolean",
     Element: isElement,
-    Number: d => typeof d === 'number',
-    String: d => typeof d === 'string',
+    Number: d => typeof d === "number",
+    String: d => typeof d === "string"
   };
 
   if (!checks.hasOwnProperty(type)) return false;
@@ -39,8 +39,8 @@ const checkAttributes = attrs =>
 
 export default checks => el => {
   let keys, valid, chKeys;
-  if (!el.attributes) return false;
-  const attrs = Array.prototype.slice.call(el.attributes);
+  if (!el && !el.attributes) return false;
+  const attrs = [...el.attributes];
   if (!checkAttributes(attrs)) return false;
   keys = Object.keys(el.dataset);
   chKeys = Object.keys(checks);

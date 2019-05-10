@@ -40,19 +40,45 @@ EventListener(modules);
 HTML Set up for Alert
 
 ```html
-<div id="my-alert">
+<div id="my-alert" aria-hidden="false">
   Some Alert
-  <a href="#" data-alert="my-alert">Close</a>
+  <button
+    data-alert="my-alert"
+    aria-controls="my-alert"
+    aria-pressed="false"
+    role="button"
+  >
+    Close
+  </button>
 </div>
+```
+
+HTML set up for close all alerts will close all alerts set as above
+
+```html
+<button data-alerts-clear="true" role="button">Close All Alerts</button>
+```
+
+HTML set up for opening all alerts will open all closed alerts set as above
+
+```html
+<button data-alerts-reset="true" role="button">Open All Alerts</button>
 ```
 
 HTML set up for Cookiebar
 
 ```html
-<div id="my-cookiebar">
+<div id="my-cookiebar" aria-hidden="false">
   Cookiebar info... By closing your accepting that you accept that cookies are
   in use...
-  <a href="#" data-cookiebar="my-cookiebar">Close</a>
+  <button
+    data-cookiebar="my-cookiebar"
+    aria-controls="my-cookiebar"
+    aria-pressed="false"
+    role="button"
+  >
+    Close
+  </button>
 </div>
 ```
 
