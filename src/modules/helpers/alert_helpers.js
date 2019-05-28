@@ -4,6 +4,7 @@ import remover from "../../remove_element";
 export const closeAlert = (el, remove = true) => {
   if (el) {
     el.setAttribute("aria-hidden", "true");
+    el.style.display = "none";
     if (remove) remover(el);
   }
 };

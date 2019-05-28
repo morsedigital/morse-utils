@@ -7,6 +7,7 @@ export default (key = "alerts") => {
   return {
     check: checker({ alertsReset: "Boolean" }),
     trigger: function(el, e) {
+      console.log('Reset clicked??')
       e.preventDefault();
       alertsCookie.deleteCookie();
       document.location.reload();

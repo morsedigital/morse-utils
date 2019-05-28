@@ -1,4 +1,8 @@
-import { isElement, isFunction } from 'lodash';
+// import { isElement, isFunction } from 'lodash';
+
+const isElement = el => el instanceof Element;
+
+const isFunction = () => typeof cb === "function";
 
 export default function(el, cb) {
   if (!isElement(el)) return null;

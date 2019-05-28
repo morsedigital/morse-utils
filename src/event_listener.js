@@ -1,5 +1,3 @@
-import isArray from 'lodash/isArray';
-
 const checkParent = (check, elm) => {
   if (elm === document.body) return null;
   if (check(elm.parentNode)) return elm.parentNode;
@@ -10,7 +8,6 @@ const checkParent = (check, elm) => {
 const manageEvents = modules =>
   function(e) {
     const element = e.target;
-
     modules.forEach(({ check, trigger }) => {
       if (check(element)) {
         trigger(element, e);
@@ -22,12 +19,12 @@ const manageEvents = modules =>
   };
 
 export default function(modules) {
-  if (!isArray) throw new Error('Must be array');
+  if (!Array.isArray(modules)) throw new Error("Must be array");
 
   const eventHandler = manageEvents(modules);
-  document.body.addEventListener('click', eventHandler, false);
+  document.body.addEventListener("click", eventHandler, false);
 
   return function() {
-    document.body.removeEventListener('click', eventHandler, false);
+    document.body.removeEventListener("click", eventHandler, false);
   };
 }

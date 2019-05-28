@@ -1,4 +1,4 @@
-import { includes, isArray, isElement } from "lodash";
+import { isElement } from "lodash";
 
 const setData = (type, data) => {
   switch (type) {
@@ -17,9 +17,9 @@ const setData = (type, data) => {
 
 export const checker = (type, dataAttr) => {
   const checks = {
-    Array: isArray,
+    Array: Array.isArray,
     Boolean: d => typeof d === "boolean",
-    Element: isElement,
+    Element: d => d instanceof Element,
     Number: d => typeof d === "number",
     String: d => typeof d === "string"
   };
@@ -47,7 +47,7 @@ export default checks => el => {
 
   valid = chKeys.reduce((test, ch) => {
     if (!test) return false;
-    return includes(keys, ch);
+    return keys.includes(ch);
   }, true);
   if (!valid) return valid;
 
