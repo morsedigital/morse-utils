@@ -1,6 +1,6 @@
 {
   "name": "@morsedigital/morse-utils",
-  "version": "4.2.0",
+  "version": "4.3.0",
   "description": "Utility Functions for Morse Site/App",
   "main": "index.js",
   "scripts": {
