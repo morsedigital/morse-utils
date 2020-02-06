@@ -9,10 +9,9 @@ export default {
   input: "src/index.js",
   plugins: [
     resolve({
-      jsnext: true,
-      main: true,
+      mainFields: ['module', 'main', 'jsnext:main'],
       browser: true,
-      extensions: [".js"]
+      extensions: ['.js'],
     }),
     commonjs(),
     babel({

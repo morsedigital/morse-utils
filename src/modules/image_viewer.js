@@ -1,5 +1,5 @@
 import checker from '../checker';
-import { uniqueId } from 'lodash';
+import  uniqueId from 'lodash/uniqueId';
 
 const closeModal = (modal, lastFocus) => e => {
   e.preventDefault();

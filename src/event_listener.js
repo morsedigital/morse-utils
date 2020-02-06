@@ -22,6 +22,7 @@ export default function(modules) {
   if (!Array.isArray(modules)) throw new Error("Must be array");
 
   const eventHandler = manageEvents(modules);
+  console.log('huh?', document.body)
   document.body.addEventListener("click", eventHandler, false);
 
   return function() {
